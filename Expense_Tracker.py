@@ -21,7 +21,7 @@ def tax_calculation(income):
             
         Returns:
             tax (int): The user's yearly tax expense"""
-    salary = (income * 12)
+    salary = (int(income) * 12)
     if salary < 11000:
         tax = (.10 * salary)
     elif 11000 < salary < 44725:
@@ -59,7 +59,7 @@ def main():
     Continue = True
     while Continue:
         print("Welcome to the Expense Tracker!")
-        income = input("Please enter your monthly income")
+        income = input("Please enter your monthly income: ")
         print("Please select an option from the menu below:")
         print("1. Add an expense")
         print("2. Delete an expense")
