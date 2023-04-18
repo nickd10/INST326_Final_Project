@@ -1,3 +1,11 @@
+class Expense:
+    def __init__(self, category, amount):
+        self.category = category
+        self.amount = amount
+
+    def __str__(self):
+        return "Category: " + self.category + "\nPrice: " + self.amount
+
 def add_expense():
     pass
 
@@ -6,7 +14,13 @@ def delete_expense():
 
 def tax_calculation(income):
     """Calculates the yearly tax expense of the user based on their
-        income and the tax rate of their country."""
+        income and the tax rate of their country.
+        
+        Args:
+            income (int): The user's monthly income
+            
+        Returns:
+            tax (int): The user's yearly tax expense"""
     salary = (income * 12)
     if salary < 11000:
         tax = (.10 * salary)
@@ -23,8 +37,7 @@ def tax_calculation(income):
     elif salary > 578125:
         tax = (.37 * salary)
     print("Your yearly tax expense is: ", tax)
-
-def average_expense():
+def average_expense_by_category():
     """Calculates the average price for expenses by category for each
         month of the year"""
     pass
@@ -65,7 +78,7 @@ def main():
         elif option == "3":
             tax_calculation(income)
         elif option == "4":
-            average_expense()
+            average_expense_by_category()
         elif option == "5":
             total_expenses()
         elif option == "6":
@@ -76,5 +89,8 @@ def main():
             pay_credit()
         elif option == "9":
             Continue = False
+            print("Thank you for using the Expense Tracker!")
         else:
             print("Invalid option, please try again.")
+if __name__ == "__main__":
+    main()
