@@ -1,3 +1,10 @@
+class Expense:
+    def __init__(self, category, amount):
+        self.category = category
+        self.amount = amount
+    
+    def __str__(self):
+        return "Category: " + self.category + "\nPrice: " + self.amount
 
 def add_expense():
     pass
@@ -7,7 +14,13 @@ def delete_expense():
 
 def tax_calculation(income):
     """Calculates the yearly tax expense of the user based on their
-        income and the tax rate of their country."""
+        income and the tax rate of their country.
+        
+        Args:
+            income (int): The user's monthly income
+            
+        Returns:
+            tax (int): The user's yearly tax expense"""
     salary = (income * 12)
     if salary < 11000:
         tax = (.10 * salary)
