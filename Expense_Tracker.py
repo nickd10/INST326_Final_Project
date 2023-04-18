@@ -1,3 +1,4 @@
+
 def add_expense():
     pass
 
@@ -24,7 +25,7 @@ def tax_calculation(income):
         tax = (.37 * salary)
     print("Your yearly tax expense is: ", tax)
 
-def average_expense():
+def average_expense_by_category():
     """Calculates the average price for expenses by category for each
         month of the year"""
     pass
@@ -65,7 +66,7 @@ def main():
         elif option == "3":
             tax_calculation(income)
         elif option == "4":
-            average_expense()
+            average_expense_by_category()
         elif option == "5":
             total_expenses()
         elif option == "6":
@@ -76,6 +77,7 @@ def main():
             pay_credit()
         elif option == "9":
             Continue = False
+            print("Thank you for using the Expense Tracker!")
         else:
             print("Invalid option, please try again.")
 
