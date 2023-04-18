@@ -4,10 +4,25 @@ def add_expense():
 def delete_expense():
     pass
 
-def tax_calculation():
+def tax_calculation(income):
     """Calculates the yearly tax expense of the user based on their
         income and the tax rate of their country."""
-    pass
+    salary = (income * 12)
+    if salary < 11000:
+        tax = (.10 * salary)
+    elif 11000 < salary < 44725:
+        tax = (.12 * salary)
+    elif 44725 < salary < 95375:
+        tax = (.22 * salary)
+    elif 95375 < salary < 182100:
+        tax = (.24 * salary)
+    elif 182100 < salary < 231250:
+        tax = (.32 * salary)
+    elif 231250 < salary < 578125:
+        tax = (.35 * salary)
+    elif salary > 578125:
+        tax = (.37 * salary)
+    print("Your yearly tax expense is: ", tax)
 
 def average_expense():
     """Calculates the average price for expenses by category for each
@@ -31,6 +46,7 @@ def main():
     Continue = True
     while Continue:
         print("Welcome to the Expense Tracker!")
+        income = input("Please enter your monthly income")
         print("Please select an option from the menu below:")
         print("1. Add an expense")
         print("2. Delete an expense")
@@ -47,7 +63,7 @@ def main():
         elif option == "2":
             delete_expense()
         elif option == "3":
-            tax_calculation()
+            tax_calculation(income)
         elif option == "4":
             average_expense()
         elif option == "5":
