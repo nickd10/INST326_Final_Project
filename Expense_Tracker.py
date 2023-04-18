@@ -4,7 +4,7 @@ class Expense:
         self.amount = amount
 
     def __str__(self):
-        return "Category: " + self.category + "\nPrice: " + self.amount
+        return "Category: " + self.category + "\nAmount: " + self.amount
 
 def add_expense():
     pass
@@ -37,7 +37,7 @@ def tax_calculation(income):
     elif salary > 578125:
         tax = (.37 * salary)
     print("Your yearly tax expense is: ", tax)
-def average_expense_by_category():
+def average_expense_by_category(expenses):
     """Calculates the average price for expenses by category for each
         month of the year"""
     pass
