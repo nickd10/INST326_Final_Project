@@ -46,9 +46,11 @@ def average_expense_by_category(expenses):
     pass
 
 def total_expenses():
+    """Calculates the overall amount spent monthly, regardless of category"""
     pass
 
 def expense_by_category():
+    """Calculates how much money the user spends on each category on a monthly basis"""
     pass
 
 def expense_per_month():
