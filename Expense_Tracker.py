@@ -2,17 +2,12 @@ class Expense:
     def __init__(self, category, amount):
         self.category = category
         self.amount = amount
+        self.list_of_items = {}
+        self.input = input("Please select an option from the menu below: ")
 
     def __str__(self):
-        return "Category: " + self.category + "\nAmount: " + str(self.amount)
+        return
     
-class Expense_Tracker:
-    def __init__(self, income):
-        self.income = income
-        self.expenses = []
-
-    def __str__(self):
-        return "Income: " + str(self.income) + "\nExpenses: " + str(self.expenses)
     
 def add_expense():
     pass
@@ -64,41 +59,46 @@ def pay_credit():
 
 def main():
     """Main function of the program"""
-    Continue = True
-    while Continue:
-        print("Welcome to the Expense Tracker!")
-        income = input("Please enter your monthly income: ")
-        print("Please select an option from the menu below:")
-        print("1. Add an expense")
-        print("2. Delete an expense")
-        print("3. Calculate yearly tax")
-        print("4. Calculate average expense by category")
-        print("5. Calculate total expenses")
-        print("6. Calculate expenses by category")
-        print("7. Calculate expenses per month")
-        print("8. Pay credit")
-        print("9. Exit")
-        option = input("Please enter your selection: ")
-        if option == "1":
-            add_expense()
-        elif option == "2":
-            delete_expense()
-        elif option == "3":
-            tax_calculation(income)
-        elif option == "4":
-            average_expense_by_category()
-        elif option == "5":
-            total_expenses()
-        elif option == "6":
-            expense_by_category()
-        elif option == "7":
-            expense_per_month()
-        elif option == "8":
-            pay_credit()
-        elif option == "9":
-            Continue = False
-            print("Thank you for using the Expense Tracker!")
-        else:
-            print("Invalid option, please try again.")
+    category = input("Please enter the category: ")
+    amount = input("Please enter the amount: ")
+    expense = Expense(category, amount)
+    print(expense)
+    # Continue = True
+
+    # while Continue:
+    #     print("Welcome to the Expense Tracker!")
+    #     income = input("Please enter your monthly income: ")
+    #     print("Please select an option from the menu below:")
+    #     print("1. Add an expense")
+    #     print("2. Delete an expense")
+    #     print("3. Calculate yearly tax")
+    #     print("4. Calculate average expense by category")
+    #     print("5. Calculate total expenses")
+    #     print("6. Calculate expenses by category")
+    #     print("7. Calculate expenses per month")
+    #     print("8. Pay credit")
+    #     print("9. Exit")
+    #     option = input("Please enter your selection: ")
+    #     if option == "1":
+    #         add_expense()
+    #     elif option == "2":
+    #         delete_expense()
+    #     elif option == "3":
+    #         tax_calculation(income)
+    #     elif option == "4":
+    #         average_expense_by_category()
+    #     elif option == "5":
+    #         total_expenses()
+    #     elif option == "6":
+    #         expense_by_category()
+    #     elif option == "7":
+    #         expense_per_month()
+    #     elif option == "8":
+    #         pay_credit()
+    #     elif option == "9":
+    #         Continue = False
+    #         print("Thank you for using the Expense Tracker!")
+    #     else:
+    #         print("Invalid option, please try again.")
 if __name__ == "__main__":
     main()
