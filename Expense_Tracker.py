@@ -4,7 +4,12 @@ class Expense:
         self.amount = amount
 
     def __str__(self):
-        return "Category: " + self.category + "\nAmount: " + self.amount
+        return "Category: " + self.category + "\nAmount: " + str(self.amount)
+    
+class Expense_Tracker:
+    def __init__(self, income):
+        self.income = income
+        self.expenses = []
 
 def add_expense():
     pass
@@ -57,6 +62,7 @@ def pay_credit():
 def main():
     """Main function of the program"""
     Continue = True
+    expenses = []
     while Continue:
         print("Welcome to the Expense Tracker!")
         income = input("Please enter your monthly income: ")
