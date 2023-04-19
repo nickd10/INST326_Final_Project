@@ -62,7 +62,6 @@ def pay_credit():
 def main():
     """Main function of the program"""
     Continue = True
-    expenses = []
     while Continue:
         print("Welcome to the Expense Tracker!")
         income = input("Please enter your monthly income: ")
