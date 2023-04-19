@@ -11,6 +11,9 @@ class Expense_Tracker:
         self.income = income
         self.expenses = []
 
+    def __str__(self):
+        return "Income: " + str(self.income) + "\nExpenses: " + str(self.expenses)
+    
 def add_expense():
     pass
 
