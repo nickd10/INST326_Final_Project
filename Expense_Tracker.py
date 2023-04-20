@@ -10,12 +10,12 @@ class Expense:
     
     
 def add_expense():
-    """Will add an expense name and amount (string, int) to a dictionary of expenses, 
+    """Will add an expense name and amount (string, float) to a dictionary of expenses, 
     append it, and will calculate and return the new total expense amount"""
     pass
 
 def delete_expense():
-    """Will delete an expense name and amount (string, int) from a dictionary of expenses,
+    """Will delete an expense name and amount (string, float) from a dictionary of expenses,
     append it, and will calculate and return the new total expense amount"""
     pass
 
