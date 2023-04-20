@@ -10,9 +10,13 @@ class Expense:
     
     
 def add_expense():
+    """Will add an expense name and amount to a dictionary of expenses, 
+    append it, and will calculate and return the new total expense amount"""
     pass
 
 def delete_expense():
+    """Will delete an expense name and amount from a dictionary of expenses,
+    append it, and will calculate and return the new total expense amount"""
     pass
 
 def tax_calculation(income):
