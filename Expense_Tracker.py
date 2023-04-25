@@ -1,9 +1,7 @@
-class Expense:
-    def __init__(self, category, amount):
-        self.category = category
-        self.amount = amount
-        self.list_of_items = {}
-        self.input = input("Please select an option from the menu below: ")
+class ExpenseTracker:
+    def __init__(self, income):
+        self.expenses = {}
+        self.income = income
 
     def __str__(self):
         return
