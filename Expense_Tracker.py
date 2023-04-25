@@ -65,8 +65,7 @@ def main():
     """Main function of the program"""
     category = input("Please enter the category: ")
     amount = input("Please enter the amount: ")
-    expense = Expense(category, amount)
-    print(expense)
+    print()
     # Continue = True
 
     # while Continue:
