@@ -9,9 +9,11 @@ class Expense:
         return
     
     
-def add_expense():
+def add_expense(expense_name, expense_amount, expense_dict):
     """Will add an expense name and amount (string, float) to a dictionary of expenses, 
     append it, and will calculate and return the new total expense amount"""
+    expense_dict[expense_name] = expense_amount
+    total_expense = sum(expenses_dict.values())
     pass
 
 def delete_expense():
