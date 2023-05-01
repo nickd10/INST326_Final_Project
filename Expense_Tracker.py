@@ -14,7 +14,7 @@ def add_expense(expense_name, expense_amount, expense_dict):
     append it, and will calculate and return the new total expense amount"""
     expense_dict[expense_name] = expense_amount
     total_expense = sum(expenses_dict.values())
-    pass
+    return total_expense
 
 def delete_expense():
     """Will delete an expense name and amount (string, float) from a dictionary of expenses,
