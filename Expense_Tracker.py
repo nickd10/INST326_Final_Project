@@ -5,19 +5,19 @@ class ExpenseTracker:
 
     
         
-    def add_expense(expense_name, expense_amount, expense_dict):
+    def add_expense(self, name, amount):
         """Will add an expense name and amount (string, float) to a dictionary of expenses, 
         append it, and will calculate and return the new total expense amount"""
-        expense_dict[expense_name] = expense_amount
-        total_expense = sum(expense_dict.values())
+        self.expenses[name] = amount
+        total_expense = sum(self.expenses.values())
         return total_expense
 
-    def delete_expense(expense, name):
+    def delete_expense(self, name):
         """Will delete an expense name and amount (string, float) from a dictionary of expenses,
         append it, and will calculate and return the new total expense amount"""
-        amount = expense.pop(name)
-        total = sum(expense.values())
-        return amount, total
+        self.expenses.pop(name)
+        total_expense = sum(self.expenses.values())
+        return total_expense
 
     def tax_calculation(income):
         """Calculates the yearly tax expense of the user based on their
