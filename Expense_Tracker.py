@@ -89,7 +89,6 @@ def main():
     Continue = True
     while Continue:
         
-        income = input("Please enter your monthly income: ")
         print("Please select an option from the menu below:")
         print("1. Add an expense")
         print("2. Delete an expense")
