@@ -44,10 +44,17 @@ class ExpenseTracker:
         elif salary > 578125:
             tax = (.37 * salary)
         print("Your yearly tax expense is: ", tax)
-    def average_expense_by_category(expenses):
+    def average_expense_by_category(self, category, prnt = True):
         """Calculates the average price for expenses by category for each
             month of the year"""
-        pass
+        
+        if category not in self.expenses:
+            print("Category not found.")
+            return 0
+        else:
+            avg = sum(self.expenses[category])/len(self.expenses[category])
+            if prnt: print(f"The average expense for {category} per month is {avg}")
+            return avg
 
     def total_expenses():
         """Calculates the overall amount spent monthly, regardless of category"""
