@@ -21,31 +21,30 @@ class ExpenseTracker:
         total_expense = sum(int(self.expenses.values()))
         return total_expense
 
-    def tax_calculation(income):
+    def tax_calculation(self):
         """Calculates the yearly tax expense of the user based on their
-            income and the tax rate of their country.
-            
-            Args:
-                income (int): The user's monthly income
-                
-            Returns:
-                tax (int): The user's yearly tax expense"""
-        salary = (int(income) * 12)
+        income and the tax rate of their country.
+
+        Returns:
+            tax (int): The user's yearly tax expense"""
+        salary = self.income * 12
         if salary < 11000:
-            tax = (.10 * salary)
+            tax = 0.10 * salary
         elif 11000 < salary < 44725:
-            tax = (.12 * salary)
+            tax = 0.12 * salary
         elif 44725 < salary < 95375:
-            tax = (.22 * salary)
+            tax = 0.22 * salary
         elif 95375 < salary < 182100:
-            tax = (.24 * salary)
+            tax = 0.24 * salary
         elif 182100 < salary < 231250:
-            tax = (.32 * salary)
+            tax = 0.32 * salary
         elif 231250 < salary < 578125:
-            tax = (.35 * salary)
+            tax = 0.35 * salary
         elif salary > 578125:
-            tax = (.37 * salary)
-        print("Your yearly tax expense is: ", tax)
+            tax = 0.37 * salary
+        print("Your yearly tax expense is:", tax)
+        return tax
+
     def average_expense_by_category(self, category, prnt = True):
         """Calculates the average price for expenses by category for each
             month of the year"""
@@ -63,26 +62,24 @@ class ExpenseTracker:
         total = sum(int(self.expenses.values()))
         return total
 
-    def expense_by_category():
+    def expense_by_category(self, amount):
         """Calculates how much money the user spends on each category on a monthly basis"""
         expense_category = {}
-        for expenses in self.expenses():
+        for expenses in self.expenses:
             for category in expense_category:
                 expense_category[category] += amount
             else: 
                 expense_category[category] = amount
-         return expense_category
+            return expense_category
  
 
     def expense_projection(self):
-        """Project expenses for the upcoming months"""
-        monthly_expenses = sum(self.expenses.values()) / len(self.expenses)
-        num_of_months = input("Please enter the number of months you would like to project your expenses for: ")
-        projection_months = int(num_of_months)
-        projected_expenses = monthly_expenses * projection_months
+        """Projects expenses for the upcoming months"""
+        monthly_expenses = sum([sum(expenses) for expenses in self.expenses.values()]) / len(self.expenses)
+        num_of_months = int(input("Please enter the number of months you would like to project your expenses for: "))
+        projected_expenses = monthly_expenses * num_of_months
+        print(f"Your projected expenses for the next {num_of_months} months is {projected_expenses}")
 
-        print("Expense Projection:")
-        print(f"Expected Expenses for the Next {projection_months} Months: {projected_expenses}")
 
     def set_savings():
         pass
@@ -125,7 +122,7 @@ def main():
             name = input("Please Enter the category to delete: ")
             tracker.delete_expense(name)
         elif option == "3":
-            tracker.tax_calculation(income)
+            tracker.tax_calculation()
         elif option == "4":
             tracker.average_expense_by_category()
         elif option == "5":
