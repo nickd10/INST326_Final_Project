@@ -17,9 +17,11 @@ class ExpenseTracker:
     def delete_expense(self, name):
         """Will delete an expense name and amount (string, float) from a dictionary of expenses,
         append it, and will calculate and return the new total expense amount"""
-        self.expenses.pop(name)
-        total_expense = sum(int(self.expenses.values()))
-        return total_expense
+         for category, expenses in self.expenses.items():
+            if name in expenses:
+                expenses.remove(name)
+                print(f"The new total expense for {category} is {sum(expenses)}")
+                return sum(expenses)
 
     def tax_calculation(income):
         """Calculates the yearly tax expense of the user based on their
