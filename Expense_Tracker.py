@@ -65,7 +65,8 @@ class ExpenseTracker:
         """Calculates how much money the user spends on each category on a monthly basis"""
         pass
 
-    def expense_per_month():
+    def expense_projection():
+        """Gives the user a prediction of how much they are expected to spend over a certain period of time"""
         pass
 
     def set_savings():
