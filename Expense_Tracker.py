@@ -17,9 +17,11 @@ class ExpenseTracker:
     def delete_expense(self, name):
         """Will delete an expense name and amount (string, float) from a dictionary of expenses,
         append it, and will calculate and return the new total expense amount"""
-        self.expenses.pop(name)
-        total_expense = sum(int(self.expenses.values()))
-        return total_expense
+        for category, expenses in self.expenses.items():
+            if name in expenses:
+                expenses.remove(name)
+                print(f"The new total expense for {category} is {sum(expenses)}")
+                return sum(expenses)
 
     def tax_calculation(self):
         """Calculates the yearly tax expense of the user based on their
@@ -62,16 +64,14 @@ class ExpenseTracker:
         total = sum(int(self.expenses.values()))
         return total
 
-    def expense_by_category(self, amount):
+
+    def expense_by_category(self, category):
         """Calculates how much money the user spends on each category on a monthly basis"""
-        expense_category = {}
-        for expenses in self.expenses:
-            for category in expense_category:
-                expense_category[category] += amount
-            else: 
-                expense_category[category] = amount
-            return expense_category
- 
+        if category in self.expenses:
+            print ("Category not found")
+        else:
+            print (sum(self.expenses[category]))
+
 
     def expense_projection(self):
         """Projects expenses for the upcoming months"""
@@ -81,8 +81,11 @@ class ExpenseTracker:
         print(f"Your projected expenses for the next {num_of_months} months is {projected_expenses}")
 
 
-    def set_savings():
-        pass
+    def set_savings(self):
+        """"""
+        total_expenses = self.total_expenses()
+        savings = self.income - total_expenses
+        print(f"You are expected to have {savings:.2f} leftover at the end")
 
 def main():
     """Main function of the program"""
