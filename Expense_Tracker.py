@@ -65,9 +65,13 @@ class ExpenseTracker:
         total = sum(int(self.expenses.values()))
         return total
 
-    def expense_by_category():
+    def expense_by_category(category):
         """Calculates how much money the user spends on each category on a monthly basis"""
-        expense_category = {}
+        if category in self.expenses:
+            print ("Category not found")
+        else:
+            print (sum(self.expenses(category)))
+        
         for expenses in self.expenses():
             for category in expense_category:
                 expense_category[category] += amount
