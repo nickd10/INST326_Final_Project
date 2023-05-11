@@ -70,7 +70,7 @@ class ExpenseTracker:
         if category in self.expenses:
             print ("Category not found")
         else:
-            print (sum(self.expenses(category)))
+            print (sum(self.expenses[category]))
  
 
     def expense_projection(self):
