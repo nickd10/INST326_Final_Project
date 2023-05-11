@@ -87,7 +87,10 @@ class ExpenseTracker:
         print(f"Expected Expenses for the Next {projection_months} Months: {projected_expenses}")
 
     def set_savings():
-        pass
+        """"""
+        total_expenses = self.total_expenses()
+        savings = self.income - total_expenses
+        print(f"You are expected to have {savings:.2f} leftover at the end")
 
 def main():
     """Main function of the program"""
