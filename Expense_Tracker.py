@@ -56,9 +56,10 @@ class ExpenseTracker:
             if prnt: print(f"The average expense for {category} per month is {avg}")
             return avg
 
-    def total_expenses():
+    def total_expenses(self, expenses):
         """Calculates the overall amount spent monthly, regardless of category"""
-        pass
+        total = sum(self.expenses.values())
+        return total
 
     def expense_by_category():
         """Calculates how much money the user spends on each category on a monthly basis"""
