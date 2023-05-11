@@ -3,20 +3,22 @@ class ExpenseTracker:
         self.expenses = {}
         self.income = income
 
-    
-        
-    def add_expense(self, name, amount):
+    def add_expense(self, category, amt):
         """Will add an expense name and amount (string, float) to a dictionary of expenses, 
         append it, and will calculate and return the new total expense amount"""
-        self.expenses[name] = amount
-        total_expense = sum(self.expenses.values())
-        return total_expense
+        if category in self.expenses:
+            self.expenses[category].append(amt)
+        else:
+            self.expenses[category] = [amt]
+
+        print(f"The new total expense for {category} is {sum(self.expenses[category])}")
+        return sum(self.expenses[category])
 
     def delete_expense(self, name):
         """Will delete an expense name and amount (string, float) from a dictionary of expenses,
         append it, and will calculate and return the new total expense amount"""
         self.expenses.pop(name)
-        total_expense = sum(self.expenses.values())
+        total_expense = sum(int(self.expenses.values()))
         return total_expense
 
     def tax_calculation(income):
@@ -58,16 +60,22 @@ class ExpenseTracker:
 
     def total_expenses(self, expenses):
         """Calculates the overall amount spent monthly, regardless of category"""
-        total = sum(self.expenses.values())
+        total = sum(int(self.expenses.values()))
         return total
 
     def expense_by_category():
         """Calculates how much money the user spends on each category on a monthly basis"""
         pass
 
-    def expense_projection():
-        """Gives the user a prediction of how much they are expected to spend over a certain period of time"""
-        pass
+    def expense_projection(self):
+        """Project expenses for the upcoming months"""
+        monthly_expenses = sum(self.expenses.values()) / len(self.expenses)
+        num_of_months = input("Please enter the number of months you would like to project your expenses for: ")
+        projection_months = int(num_of_months)
+        projected_expenses = monthly_expenses * projection_months
+
+        print("Expense Projection:")
+        print(f"Expected Expenses for the Next {projection_months} Months: {projected_expenses}")
 
     def set_savings():
         pass
@@ -98,14 +106,17 @@ def main():
         print("4. Calculate average expense by category")
         print("5. Calculate total expenses")
         print("6. Calculate expenses by category")
-        print("7. Calculate expenses per month")
-        print("8. Pay credit")
+        print("7. Expense Projection")
+        print("8. Set Savings")
         print("9. Exit")
         option = input("Please enter your selection: ")
         if option == "1":
-            tracker.add_expense()
+            name = input("Please Enter a category: ")
+            amount = input("Please enter the amount of the expense: ")
+            tracker.add_expense(name, float(amount))
         elif option == "2":
-            tracker.delete_expense()
+            name = input("Please Enter the category to delete: ")
+            tracker.delete_expense(name)
         elif option == "3":
             tracker.tax_calculation(income)
         elif option == "4":
@@ -115,9 +126,9 @@ def main():
         elif option == "6":
             tracker.expense_by_category()
         elif option == "7":
-            tracker.expense_per_month()
+            tracker.expense_projection()
         elif option == "8":
-            pass
+            tracker.set_savings()
         elif option == "9":
             Continue = False
             print("Thank you for using the Expense Tracker!")
