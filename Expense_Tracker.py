@@ -20,8 +20,8 @@ class ExpenseTracker:
        total_expense = 0
 
         for category, expenses in self.expenses.items():
-            if name in expenses:
-                expenses.remove(name)
+            if name in self.expenses:
+                self.expenses.remove(name)
                 total_expense += sum(expenses)
 
         print(f"The new total expense for all categories is {total_expense}")
