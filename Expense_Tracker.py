@@ -29,7 +29,6 @@ class ExpenseTracker:
              return sum(self.expenses[category])
 
 
-
     def average_expense_by_category(self, category, prnt = True):
         """Calculates the average price for expenses by category for each
             month of the year"""
