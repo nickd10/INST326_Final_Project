@@ -1,3 +1,5 @@
+from Tax_Calculation import tax_calculation
+
 class ExpenseTracker:
     def __init__(self, income):
         self.expenses = {}
@@ -14,38 +16,19 @@ class ExpenseTracker:
         print(f"The new total expense for {category} is {sum(self.expenses[category])}")
         return sum(self.expenses[category])
 
-    def delete_expense(self, name):
+    def delete_expense(self, category, amt):
         """Will delete an expense name and amount (string, float) from a dictionary of expenses,
         append it, and will calculate and return the new total expense amount"""
-        for category, expenses in self.expenses.items():
-            if name in expenses:
-                expenses.remove(name)
-                print(f"The new total expense for {category} is {sum(expenses)}")
-                return sum(expenses)
+        
+        if amt not in self.expenses[category]:
+            print(f"Error: the expense of amount {amt} was not found in category {category}")
+            return 0
+        else:
+             self.expenses[category].remove(amt)
+             print(f"The new total expense for {category} is {sum(self.expenses[category])}")
+             return sum(self.expenses[category])
 
-    def tax_calculation(self):
-        """Calculates the yearly tax expense of the user based on their
-        income and the tax rate of their country.
 
-        Returns:
-            tax (int): The user's yearly tax expense"""
-        salary = self.income * 12
-        if salary < 11000:
-            tax = 0.10 * salary
-        elif 11000 < salary < 44725:
-            tax = 0.12 * salary
-        elif 44725 < salary < 95375:
-            tax = 0.22 * salary
-        elif 95375 < salary < 182100:
-            tax = 0.24 * salary
-        elif 182100 < salary < 231250:
-            tax = 0.32 * salary
-        elif 231250 < salary < 578125:
-            tax = 0.35 * salary
-        elif salary > 578125:
-            tax = 0.37 * salary
-        print("Your yearly tax expense is:", tax)
-        return tax
 
     def average_expense_by_category(self, category, prnt = True):
         """Calculates the average price for expenses by category for each
@@ -59,15 +42,18 @@ class ExpenseTracker:
             if prnt: print(f"The average expense for {category} per month is {avg}")
             return avg
 
-    def total_expenses(self, expenses):
+    def total_expenses(self, prnt=True):
         """Calculates the overall amount spent monthly, regardless of category"""
-        total = sum(int(self.expenses.values()))
-        return total
+        s = 0
+        for category, expenses in self.expenses.items():
+            s += sum(expenses)
+        if prnt: print(f"Your total expenses for the month is {s}")
+        return s
 
 
     def expense_by_category(self, category):
         """Calculates how much money the user spends on each category on a monthly basis"""
-        if category in self.expenses:
+        if category not in self.expenses:
             print ("Category not found")
         else:
             print (sum(self.expenses[category]))
@@ -76,7 +62,7 @@ class ExpenseTracker:
 
     def expense_projection(self):
         """Projects expenses for the upcoming months"""
-        monthly_expenses = sum([sum(expenses) for expenses in self.expenses.values()]) / len(self.expenses)
+        monthly_expenses = sum([sum(expenses) for expenses in self.expenses.values()])
         num_of_months = int(input("Please enter the number of months you would like to project your expenses for: "))
         projected_expenses = monthly_expenses * num_of_months
         print(f"Your projected expenses for the next {num_of_months} months is {projected_expenses}")
@@ -123,16 +109,19 @@ def main():
             amount = input("Please enter the amount of the expense: ")
             tracker.add_expense(name, float(amount))
         elif option == "2":
-            name = input("Please Enter the category to delete: ")
-            tracker.delete_expense(name)
+            category = input("Please enter your category: ")
+            amt = input("Please enter the amount of the expense: ")
+            tracker.delete_expense(category, float(amt))
         elif option == "3":
-            tracker.tax_calculation()
+            tax_calculation(tracker)
         elif option == "4":
-            tracker.average_expense_by_category()
+            category = input("Please enter a category: ")
+            tracker.average_expense_by_category(category)
         elif option == "5":
             tracker.total_expenses()
         elif option == "6":
-            tracker.expense_by_category()
+            category = input("Please enter your category: ")
+            tracker.expense_by_category(category)
         elif option == "7":
             tracker.expense_projection()
         elif option == "8":
