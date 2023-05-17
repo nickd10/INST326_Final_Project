@@ -87,6 +87,15 @@ class TestStringMethods(unittest.TestCase):
 
         self.assertEqual(result, 290)
 
+    def test_tax_calculation(self):
+        """
+        Tests calculating taxes for income
+        """
+        expense_tracker = ExpenseTracker(income=10000)
+
+        result = tax_calculation(expense_tracker)
+
+        self.assertEqual(result, 28800.0)
 
 
 if __name__ == '__main__':
