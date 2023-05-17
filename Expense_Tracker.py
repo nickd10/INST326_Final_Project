@@ -1,11 +1,11 @@
 from Tax_Calculation import tax_calculation
 
 class ExpenseTracker:
-    def __init__(self, income):
+    def __init__(self, income=100000):
         self.expenses = {}
         self.income = income
 
-    def add_expense(self, category, amt):
+    def add_expense(self, category, amt, prnt=True):
         """Will add an expense name and amount (string, float) to a dictionary of expenses, 
         append it, and will calculate and return the new total expense amount"""
         if category in self.expenses:
@@ -13,19 +13,19 @@ class ExpenseTracker:
         else:
             self.expenses[category] = [amt]
 
-        print(f"The new total expense for {category} is {sum(self.expenses[category])}")
+        if prnt: print(f"The new total expense for {category} is {sum(self.expenses[category])}")
         return sum(self.expenses[category])
 
-    def delete_expense(self, category, amt):
+    def delete_expense(self, category, amt, prnt=True):
         """Will delete an expense name and amount (string, float) from a dictionary of expenses,
         append it, and will calculate and return the new total expense amount"""
         
         if amt not in self.expenses[category]:
-            print(f"Error: the expense of amount {amt} was not found in category {category}")
+            if prnt: print(f"Error: the expense of amount {amt} was not found in category {category}")
             return 0
         else:
              self.expenses[category].remove(amt)
-             print(f"The new total expense for {category} is {sum(self.expenses[category])}")
+             if prnt: print(f"The new total expense for {category} is {sum(self.expenses[category])}")
              return sum(self.expenses[category])
 
 
@@ -34,7 +34,7 @@ class ExpenseTracker:
             month of the year"""
         
         if category not in self.expenses:
-            print("Category not found.")
+            if prnt: print("Category not found.")
             return 0
         else:
             avg = sum(self.expenses[category])/len(self.expenses[category])
@@ -50,28 +50,33 @@ class ExpenseTracker:
         return s
 
 
-    def expense_by_category(self, category):
+    def expense_by_category(self, category, prnt=True):
         """Calculates how much money the user spends on each category on a monthly basis"""
         if category not in self.expenses:
-            print ("Category not found")
+            if prnt: print("Category not found")
         else:
-            print (sum(self.expenses[category]))
+            if prnt: print(sum(self.expenses[category]))
         return sum(self.expenses[category])
 
 
-    def expense_projection(self):
+    def expense_projection(self, num_of_months = -1, prnt=True):
         """Projects expenses for the upcoming months"""
         monthly_expenses = sum([sum(expenses) for expenses in self.expenses.values()])
-        num_of_months = int(input("Please enter the number of months you would like to project your expenses for: "))
+
+        if num_of_months == -1:
+            num_of_months = int(input("Please enter the number of months you would like to project your expenses for: "))
+        
         projected_expenses = monthly_expenses * num_of_months
-        print(f"Your projected expenses for the next {num_of_months} months is {projected_expenses}")
+        if prnt: print(f"Your projected expenses for the next {num_of_months} months is {projected_expenses}")
+        return projected_expenses
 
 
-    def set_savings(self):
+    def set_savings(self, prnt=True):
         """"""
-        total_expenses = self.total_expenses()
+        total_expenses = self.total_expenses(prnt=prnt)
         savings = self.income - total_expenses
-        print(f"You are expected to have {savings:.2f} leftover at the end")
+        if prnt: print(f"You are expected to have {savings:.2f} leftover at the end")
+        return savings
 
 def main():
     """Main function of the program"""
