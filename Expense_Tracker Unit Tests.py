@@ -29,6 +29,17 @@ class TestStringMethods(unittest.TestCase):
         total_expense = self.expense_tracker.get_total_expense("Entertainment")
         self.assertEqual(total_expense, 30.0)
 
+    def test_set_savings(self):
+         self.expense_tracker.add_expense("Groceries", 50.0)
+         self.expense_tracker.add_expense("Entertainment", 30.0)
+         self.expense_tracker.add_expense("Utilities", 20.0)
+
+
+         self.expense_tracker.income = 200.0
+         expected_savings = self.expense_tracker.income - self.expense_tracker.total_expenses()
+         self.assertAlmostEqual(self.expense_tracker.set_savings(), expected_savings, places=2)
+         
+
         
 if __name__ == '__main__':
         unittest.main()
