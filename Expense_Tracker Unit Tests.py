@@ -28,8 +28,24 @@ class TestStringMethods(unittest.TestCase):
         
         total_expense = self.expense_tracker.get_total_expense("Entertainment")
         self.assertEqual(total_expense, 30.0)
-
         
+    def test_total_expenses(self):
+        expenses = {
+            'groceries': [50, 30, 20],
+            'utilities': [60],
+            'rent': [900]
+        }
+        expected_total = 1060
+
+        result = total_expenses(expenses, printresult=False)
+
+        self.assertEqual(result, expected_total)
+
+    def test_expense_by_category(self):
+        self.assertEqual(self.calculator.expense_by_category("Groceries"), 125)
+        
+        self.assertEqual(self.calculator.expense_by_category("Leisure"), None)
+
 if __name__ == '__main__':
         unittest.main()
         
