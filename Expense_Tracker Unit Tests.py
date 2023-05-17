@@ -42,9 +42,9 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(result, expected_total)
 
     def test_expense_by_category(self):
-        self.assertEqual(self.calculator.expense_by_category("Groceries"), 125)
+        self.assertEqual(self.expense_tracker.expense_by_category("Groceries"), 125)
         
-        self.assertEqual(self.calculator.expense_by_category("Leisure"), None)
+        self.assertEqual(self.expense_tracker.expense_by_category("Leisure"), None)
 
 if __name__ == '__main__':
         unittest.main()
